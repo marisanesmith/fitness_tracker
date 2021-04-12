@@ -1,29 +1,65 @@
+// let db = require("../models/workout");
 const router = require("express").Router();
 const Workout = require("../models/workout.js");
 
 //// enter all route code here
 
-// get all workouts
-router.get("/api/workouts", function(req, res) {
-    db.find({}).then(function(workout) {
+module.exports = app => {
+
+    // get all workouts
+app.get("/api/workouts", (req, res) => {
+    Workout.find({}).then(workout => {
         res.send(workout);
     })
-    .catch(function (err) {
+    .catch(err => {
         res.send(err);
     });
 });
 
 //create workout
 
-router.post("api/workouts")
+app.post("api/workouts", ({ body }, res) => {
+    Workout.create(body)
+    .then(data => {
+        res.send(data);
+    })
+    .catch(err => {
+        res.send(err);
+    });
+});
 
-//upsdate workout by id
+//update workout by id
 
-router.put("api/workouts/:id")
+app.put("api/workouts/:id", (req,res) => {
+    const { id } = req.params;
+    Workout.findByIdAndUpdate(id, { $push: {exercises: req.body} })
+    .then(data => {
+        res.send(data)
+    })
+    .catch(err => {
+        res.send(err);
+    });
+})
+
+//get workout by id
+
+app.get("api/workouts/:id", (req,res) => {
+    const { id } = req.params;
+    Workout.findById(id)
+    .then(data => {
+        res.render('', {
+            exercises: exercises,
+            exerciseName: exercises.name,
+            path: '/workout'
+        });
+    })
+    .catch(err => {
+        res.send(err);
+    });    
+})
 
 // get all the workout stats
 
-router.get
+app.get
 
-
-module.exports = router;
+};
