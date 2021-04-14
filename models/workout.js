@@ -46,20 +46,6 @@ const workoutSchema = new Schema(
 });
 
 
-// app.get("/api/workouts", (req, res) => {
-//     db.aggregate([{
-//         $addFields: {
-//             totalDuration: {
-//                 $sum: "$exercises.duration"
-//             }
-//         }
-//     }]).then(allWorkouts => {
-//         console.log(allWorkouts);
-//         res.send(allWorkouts);
-//     }).catch(err => {
-//         res.send(err);
-//     });
-// })
 //need to add in how to calculate the total duration
 
 const Workout = mongoose.model("Workout", workoutSchema);
