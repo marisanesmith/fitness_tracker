@@ -1,4 +1,4 @@
-// let db = require("../models/workout");
+let db = require("../models/workout");
 const router = require("express").Router();
 const Workout = require("../models/workout.js");
 
@@ -8,7 +8,7 @@ module.exports = app => {
 
     // get all workouts
 app.get("/api/workouts", (req, res) => {
-    Workout.find({}).then(workout => {
+    db.find({}).then(workout => {
         res.send(workout);
     })
     .catch(err => {
@@ -19,7 +19,7 @@ app.get("/api/workouts", (req, res) => {
 //create workout
 
 app.post("api/workouts", ({ body }, res) => {
-    Workout.create(body)
+    db.create(body)
     .then(data => {
         res.send(data);
     })
@@ -32,7 +32,7 @@ app.post("api/workouts", ({ body }, res) => {
 
 app.put("api/workouts/:id", (req,res) => {
     const { id } = req.params;
-    Workout.findByIdAndUpdate(id, { $push: {exercises: req.body} })
+    db.findByIdAndUpdate(id, { $push: {exercises: req.body} })
     .then(data => {
         res.send(data)
     })
@@ -45,7 +45,7 @@ app.put("api/workouts/:id", (req,res) => {
 
 app.get("api/workouts/:id", (req,res) => {
     const { id } = req.params;
-    Workout.findById(id)
+    db.findById(id)
     .then(data => {
         res.render('', {
             exercises: exercises,
@@ -60,6 +60,19 @@ app.get("api/workouts/:id", (req,res) => {
 
 // get all the workout stats
 
-app.get
+app.get("api/workouts", (req, res) => {
+    db.aggregate([{
+        $addFields: {
+            totalDuration: {
+                $sum: "$exercises.duration"
+            }
+        }
+    }]).then(allWorkouts => {
+        console.log(allWorkouts);
+        res.send(allWorkouts);
+    }).catch(err => {
+        res.send(err);
+    });
+})
 
-};
+}
