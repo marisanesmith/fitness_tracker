@@ -30,7 +30,7 @@ app.post("api/workouts", ({ body }, res) => {
 
 //update workout by id
 
-app.put("api/workouts/:id", (req,res) => {
+app.put("/api/workouts/:id", (req,res) => {
     const { id } = req.params;
     db.findByIdAndUpdate(id, { $push: {exercises: req.body} })
     .then(data => {

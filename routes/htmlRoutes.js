@@ -10,12 +10,12 @@ module.exports = app => {
       });
 
     // file path for '/exercise'
-    app.get("/", (req, res) => {
+    app.get("/exercise", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/exercise.html"));
       });
 
     // file path for '/stats'
-    app.get("/", (req, res) => {
+    app.get("/stats", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/stats.html"));
       });
 };
