@@ -17,7 +17,7 @@ This application is a fully functional fitness tracker where users can log their
 ![Fitness Tracker Dashboard](public/images/fitness-tracker2.png)
 
 ## Application
-[Fitness Tracker Heroku Link](https://drive.google.com/file/d/1-imu-rP9sOSufuA75wNergu142ZKp1Nn/view)
+[Fitness Tracker Heroku Link](https://whispering-escarpment-18429.herokuapp.com/?id=607867796dc8240015dd3ec1)
 
 ## Installation
 
