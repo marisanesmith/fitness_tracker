@@ -11,25 +11,28 @@
 
 ## Project Overview
 
+This application is a fully functional fitness tracker where users can log their latest workouts and keep track of their progress on the dashboard. The user will be able to see the last 7 days of workouts along with the total duration of time spent working to reach their fitness goals. 
+
+![Fitness Tracker Home Page](public/images/fitness-tracker.png)
+![Fitness Tracker Dashboard](public/images/fitness-tracker2.png)
+
 ## Application
 [Fitness Tracker Heroku Link](https://drive.google.com/file/d/1-imu-rP9sOSufuA75wNergu142ZKp1Nn/view)
 
 ## Installation
 
-To properly run this application you will need to install the following dependencies: 
+To properly run this application you will need to initialize your project by running a npm init -y and then npm install the following dependencies: 
 
 * express
 * mongoose
 * morgon
 
-After initilizing the project and installing the dependencies you will need to run the schema.sql file in your MySQL Workbench or database to create the tech blog database. 
-
-Once you have created the database you will need to run the following commands in your terminal to seed the database and begin listening on your server port.
+Once the dependencies have been installed you will need to run the following commands in your terminal to seed the database and begin listening on your server port.
 
 1. npm run seed
 2. npm start
 
-After that is complete you will need to deploy the application to Heroku or a similar hosting site to view the blog online. 
+After that is complete you will need to deploy the application to Heroku or a similar hosting site to view the fitness tracker online. 
 
 ## License
 ![GitHub License](https://img.shields.io/badge/license-MIT-green.svg)
