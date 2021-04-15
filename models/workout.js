@@ -38,15 +38,7 @@ const workoutSchema = new Schema(
          }
          },
     ]
-},
-{
-    toJSON: {
-        virtuals: true
-    }
 });
-
-
-//need to add in how to calculate the total duration
 
 const Workout = mongoose.model("Workout", workoutSchema);
 

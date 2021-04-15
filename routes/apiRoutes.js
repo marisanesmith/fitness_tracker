@@ -6,14 +6,14 @@ const Workout = require("../models/workout.js");
 module.exports = app => {
 
     // get all workouts
-app.get("/api/workouts", (req, res) => {
-    Workout.find({}).then(workout => {
-        res.json(workout);
-    })
-    .catch(err => {
-        res.json(err);
-    });
-});
+// app.get("/api/workouts", (req, res) => {
+//     Workout.find({}).then(workout => {
+//         res.json(workout);
+//     })
+//     .catch(err => {
+//         res.json(err);
+//     });
+// });
 
 //create workout
 
@@ -40,23 +40,6 @@ app.put("/api/workouts/:id", (req,res) => {
     });
 })
 
-//get workout by id
-
-// app.get("/api/workouts/:id", (req,res) => {
-//     const { id } = req.params;
-//     db.findById(id)
-//     .then(data => {
-//         res.render('', {
-//             exercises: exercises,
-//             exerciseName: exercises.name,
-//             path: '/workout'
-//         });
-//     })
-//     .catch(err => {
-//         res.send(err);
-//     });    
-// })
-
 app.get("/api/workouts/range", (req, res) => {
     Workout.aggregate([{
         $addFields: {
@@ -64,7 +47,10 @@ app.get("/api/workouts/range", (req, res) => {
                 $sum: "$exercises.duration"
             }
         }
-    }]).then(allWorkouts => {
+    }])
+    .sort({ _id: -1 })
+    .limit(7)
+    .then(allWorkouts => {
         console.log(allWorkouts);
         res.json(allWorkouts);
     }).catch(err => {
