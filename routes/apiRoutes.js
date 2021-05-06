@@ -5,16 +5,6 @@ const Workout = require("../models/workout.js");
 
 module.exports = app => {
 
-    // get all workouts
-// app.get("/api/workouts", (req, res) => {
-//     Workout.find({}).then(workout => {
-//         res.json(workout);
-//     })
-//     .catch(err => {
-//         res.json(err);
-//     });
-// });
-
 //create workout
 
 app.post("/api/workouts", (req, res) => {
